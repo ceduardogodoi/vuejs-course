@@ -82,6 +82,7 @@ html {
 	border-radius: 5px;
 	text-transform: uppercase;
 	font-size: 1.1rem;
+	cursor: pointer;
 }
 
 .new-game {
