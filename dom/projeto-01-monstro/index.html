@@ -24,10 +24,12 @@
                 <div>{{ monsterLife }}%</div>
             </div>
         </div>
-        <div class="panel result">
-            <div class="win">Você ganhou!!! :)</div>
-            <div class="lose">Você perdeu! :(</div>
+
+        <div class="panel result" v-if="hasResult">
+            <div v-if="monsterLife === 0" class="win">Você ganhou!!! :)</div>
+            <div v-else class="lose">Você perdeu! :(</div>
         </div>
+
         <div class="panel buttons">
             <template>
                 <button class="btn attack">Ataque</button>
