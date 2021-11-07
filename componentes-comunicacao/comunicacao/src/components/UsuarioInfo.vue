@@ -3,6 +3,7 @@
         <h2>As Informações de Usuário</h2>
         <p>Vários detalhes...</p>
         <p>Nome do usuário: <strong>{{ inverterNome() }}</strong></p>
+        <button @click="reiniciarNome">Reiniciar nome</button>
     </div>
 </template>
 
@@ -26,6 +27,10 @@ export default {
 				.split('')
 				.reverse()
 				.join('')
+		},
+		reiniciarNome() {
+			this.nome = 'Pedro'
+			this.$emit('nomeMudou', this.nome)
 		}
 	}
 }
