@@ -12,6 +12,11 @@ export default {
 		nome: {
 			type: String,
 			// required: true
+			// default() {
+			// 	return Array(10)
+			// 		.fill(0)
+			// 		.join(',')
+			// }
 			default: 'Anônimo'
 		}
 	},
