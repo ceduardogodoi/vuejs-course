@@ -15,7 +15,7 @@ export default {
 	},
 	data() {
 		return {
-			tasks: [1]
+			tasks: []
 		}
 	}
 }

@@ -19,9 +19,11 @@ export default {}
 	border: 1px solid white;
 	background: #fff2;
 	font-size: 2rem;
+	outline: none;
 }
 
 input.form-element {
+	color: white;
 	border-top-left-radius: 8px;
 	border-bottom-left-radius: 8px;
 }
@@ -32,5 +34,6 @@ button.form-element {
 	border-bottom-right-radius: 8px;
 	background-color: #2196f3;
 	color: white;
+	cursor: pointer;
 }
 </style>
