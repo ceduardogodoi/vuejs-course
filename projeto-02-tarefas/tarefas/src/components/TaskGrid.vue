@@ -2,7 +2,7 @@
   <div class="task-grid">
     <p v-if="!tasks.length" class="no-task">Sua vida está em dia :)</p>
 
-    <Task v-else />
+    <Task v-else v-for="task in tasks" :text="task" :key="task" />
   </div>
 </template>
 
@@ -13,9 +13,12 @@ export default {
 	components: {
 		Task
 	},
-	data() {
-		return {
-			tasks: []
+	props: {
+		tasks: {
+			type: Array,
+			default() {
+				return []
+			}
 		}
 	}
 }

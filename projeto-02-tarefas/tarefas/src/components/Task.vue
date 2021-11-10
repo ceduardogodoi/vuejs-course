@@ -1,7 +1,8 @@
 <template>
   <div class="task" :class="isPending ? 'pending' : 'done'">
     <span class="close">x</span>
-    <p>Fazer café</p>
+
+    <p>{{ text }}</p>
   </div>
 </template>
 
@@ -11,6 +12,9 @@ export default {
 		return {
 			isPending: false
 		}
+	},
+	props: {
+		text: String
 	}
 }
 </script>

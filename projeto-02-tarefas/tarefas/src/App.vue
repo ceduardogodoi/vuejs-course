@@ -1,9 +1,9 @@
 <template>
 	<div id="app">
 		<h1>Tarefas</h1>
-		<ProgressBar />
+		<ProgressBar :tasks="tasks" />
 		<Input />
-		<TaskGrid />
+		<TaskGrid :tasks="tasks" />
 	</div>
 </template>
 
@@ -13,7 +13,12 @@ import Input from './components/Input.vue'
 import TaskGrid from './components/TaskGrid.vue'
 
 export default {
-	components: { ProgressBar, Input, TaskGrid }
+	components: { ProgressBar, Input, TaskGrid },
+	data() {
+		return {
+			tasks: []
+		}
+	}
 }
 </script>
 

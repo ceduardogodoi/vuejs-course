@@ -11,6 +11,14 @@ export default {
 		return {
 			progress: 30
 		}
+	},
+	props: {
+		tasks: {
+			type: Array,
+			default() {
+				return []
+			}
+		}
 	}
 }
 </script>
