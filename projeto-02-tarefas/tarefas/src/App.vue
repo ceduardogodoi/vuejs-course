@@ -2,7 +2,7 @@
 	<div id="app">
 		<h1>Tarefas</h1>
 		<ProgressBar :tasks="tasks" />
-		<Input />
+		<Input :tasks="tasks" />
 		<TaskGrid :tasks="tasks" />
 	</div>
 </template>

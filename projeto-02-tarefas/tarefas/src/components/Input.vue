@@ -1,12 +1,35 @@
 <template>
   <div class="new-task">
-    <input class="form-element" type="text" placeholder="Nova tarefa?">
-    <button class="form-element">+</button>
+    <input @keyup.enter="text && createTask()" class="form-element" type="text" placeholder="Nova tarefa?" v-model="text">
+    <button @click="createTask" class="form-element" :disabled="!text">+</button>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+	data() {
+		return {
+			text: ''
+		}
+	},
+	props: {
+		tasks: {
+			type: Array,
+			default() {
+				return []
+			}
+		}
+	},
+	methods: {
+		createTask() {
+			const isDuplicateTask = this.$props.tasks.some(task => task === this.text)
+
+			if (!isDuplicateTask) {
+				this.$props.tasks.push(this.text)
+			}
+		}
+	}
+}
 </script>
 
 <style>
@@ -35,5 +58,9 @@ button.form-element {
 	background-color: #2196f3;
 	color: white;
 	cursor: pointer;
+}
+
+button.form-element:disabled {
+	background-color: #ccc;
 }
 </style>
