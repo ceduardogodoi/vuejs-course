@@ -27,10 +27,22 @@ export default {
 			return Math.round((done / total) * 100) || 0
 		}
 	},
+	watch: {
+		tasks: {
+			deep: true,
+			handler() {
+				localStorage.setItem('tasks', JSON.stringify(this.tasks))
+			}
+		}
+	},
 	methods: {
 		deleteTask(index) {
 			this.tasks.splice(index, 1)
 		}
+	},
+	created() {
+		const json = localStorage.getItem('tasks')
+		this.tasks = JSON.parse(json) || []
 	}
 }
 </script>
