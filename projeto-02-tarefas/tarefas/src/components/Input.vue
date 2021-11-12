@@ -28,6 +28,7 @@ export default {
 
 			if (!isDuplicateTask) {
 				this.$props.tasks.push({ text: this.text, completed: false })
+				this.text = ''
 			}
 		}
 	}

@@ -1,6 +1,6 @@
 <template>
   <div @click="toggleTask" class="task" :class="isPending ? 'pending' : 'done'">
-    <span @click="$emit('deleteTask', task)" class="close">x</span>
+    <span @click.stop="$emit('deleteTask', task)" class="close">x</span>
 
     <p>{{ task.text }}</p>
   </div>
