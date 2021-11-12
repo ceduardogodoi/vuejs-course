@@ -1,8 +1,8 @@
 <template>
-  <div class="task" :class="isPending ? 'pending' : 'done'">
+  <div @click="fazAlgo" class="task" :class="isPending ? 'pending' : 'done'">
     <span class="close">x</span>
 
-    <p>{{ text }}</p>
+    <p>{{ task.text }}</p>
   </div>
 </template>
 
@@ -13,8 +13,16 @@ export default {
 			isPending: true
 		}
 	},
+	methods: {
+		fazAlgo() {
+			alert('faz algo')
+		}
+	},
+	mounted() {
+		console.log(this.$props)
+	},
 	props: {
-		text: String
+		task: { text: String, completed: Boolean }
 	}
 }
 </script>

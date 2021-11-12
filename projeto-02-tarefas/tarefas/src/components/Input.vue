@@ -22,10 +22,12 @@ export default {
 	},
 	methods: {
 		createTask() {
-			const isDuplicateTask = this.$props.tasks.some(task => task === this.text)
+			const isDuplicateTask = this.$props.tasks.some(
+				task => task.text === this.text
+			)
 
 			if (!isDuplicateTask) {
-				this.$props.tasks.push(this.text)
+				this.$props.tasks.push({ text: this.text, completed: false })
 			}
 		}
 	}

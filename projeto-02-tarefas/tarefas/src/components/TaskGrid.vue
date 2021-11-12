@@ -2,7 +2,7 @@
   <div class="task-grid">
     <p v-if="!tasks.length" class="no-task">Sua vida está em dia :)</p>
 
-    <Task v-else v-for="task in tasks" :text="task" :key="task" />
+    <Task v-else v-for="task in tasks" :task="task" :key="task.text" />
   </div>
 </template>
 
