@@ -2,7 +2,7 @@
   <div class="task-grid">
     <p v-if="!tasks.length" class="no-task">Sua vida está em dia :)</p>
 
-    <Task v-else v-for="task in tasks" :task="task" :key="task.text" />
+    <Task @deleteTask="deleteTask($event)" v-else v-for="task in tasks" :task="task" :key="task.text" />
   </div>
 </template>
 
@@ -19,6 +19,14 @@ export default {
 			default() {
 				return []
 			}
+		}
+	},
+	methods: {
+		deleteTask($event) {
+			const index = this.$props.tasks.findIndex(
+				task => task.text === $event.text
+			)
+			this.$props.tasks.splice(index, 1)
 		}
 	}
 }
