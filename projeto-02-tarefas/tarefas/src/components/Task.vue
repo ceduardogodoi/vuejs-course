@@ -1,5 +1,5 @@
 <template>
-  <div @click="toggleTask" class="task" :class="isPending ? 'pending' : 'done'">
+  <div @click="toggleTask" class="task" :class="task.completed ? 'done' : 'pending'">
     <span @click.stop="$emit('deleteTask', task)" class="close">x</span>
 
     <p>{{ task.text }}</p>
@@ -8,17 +8,12 @@
 
 <script>
 export default {
-	data() {
-		return {
-			isPending: true
-		}
-	},
 	props: {
 		task: { text: String, completed: Boolean }
 	},
 	methods: {
 		toggleTask() {
-			this.isPending = !this.isPending
+			this.task.completed = !this.task.completed
 			this.$emit('completeTask')
 		}
 	}

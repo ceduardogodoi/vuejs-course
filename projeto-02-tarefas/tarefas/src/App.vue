@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
 		<h1>Tarefas</h1>
-		<ProgressBar :tasks="tasks" />
+		<ProgressBar :progress="progress" />
 		<Input :tasks="tasks" />
 		<TaskGrid :tasks="tasks" @deleteTask="deleteTask" />
 	</div>
@@ -17,6 +17,14 @@ export default {
 	data() {
 		return {
 			tasks: []
+		}
+	},
+	computed: {
+		progress() {
+			const total = this.tasks.length
+			const done = this.tasks.filter(task => task.completed).length
+
+			return Math.round((done / total) * 100) || 0
 		}
 	},
 	methods: {

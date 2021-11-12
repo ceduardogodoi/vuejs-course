@@ -7,18 +7,8 @@
 
 <script>
 export default {
-	data() {
-		return {
-			progress: 30
-		}
-	},
 	props: {
-		tasks: {
-			type: Array,
-			default() {
-				return []
-			}
-		}
+		progress: { type: Number, default: 0 }
 	}
 }
 </script>
