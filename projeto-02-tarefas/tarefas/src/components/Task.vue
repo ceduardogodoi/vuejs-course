@@ -1,6 +1,6 @@
 <template>
   <div @click="toggleTask" class="task" :class="isPending ? 'pending' : 'done'">
-    <span @click="deleteTask" class="close">x</span>
+    <span @click="$emit('deleteTask', task)" class="close">x</span>
 
     <p>{{ task.text }}</p>
   </div>
@@ -17,9 +17,6 @@ export default {
 		task: { text: String, completed: Boolean }
 	},
 	methods: {
-		deleteTask() {
-			this.$emit('deleteTask', this.$props.task)
-		},
 		toggleTask() {
 			this.isPending = !this.isPending
 			this.$emit('completeTask')

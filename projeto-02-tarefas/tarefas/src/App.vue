@@ -3,7 +3,7 @@
 		<h1>Tarefas</h1>
 		<ProgressBar :tasks="tasks" />
 		<Input :tasks="tasks" />
-		<TaskGrid :tasks="tasks" />
+		<TaskGrid :tasks="tasks" @deleteTask="deleteTask" />
 	</div>
 </template>
 
@@ -17,6 +17,11 @@ export default {
 	data() {
 		return {
 			tasks: []
+		}
+	},
+	methods: {
+		deleteTask(index) {
+			this.tasks.splice(index, 1)
 		}
 	}
 }
