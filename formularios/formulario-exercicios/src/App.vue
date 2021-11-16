@@ -5,7 +5,7 @@
 			<form class="painel">
 				<div class="cabecalho">Formulário</div>
 				<Rotulo nome="E-mail">
-					<input type="text">
+					<input type="text" v-model="email">
 				</Rotulo>
 				<Rotulo nome="Senha">
 					<input type="password">
@@ -39,7 +39,7 @@
 			<div class="painel">
 				<div class="cabecalho">Resultado</div>
 				<Rotulo nome="E-mail">
-					<span>???</span>
+					<span>{{ email }}</span>
 				</Rotulo>
 				<Rotulo nome="Senha">
 					<span>???</span>
@@ -73,14 +73,18 @@ import Escolha from './components/Escolha.vue'
 
 export default {
 	name: 'app',
-	components: { Rotulo, Escolha }
+	components: { Rotulo, Escolha },
+	data() {
+		return {
+			email: ''
+		}
+	}
 }
 </script>
 
 <style>
-
 body {
-	background-color: #ECECEC;
+	background-color: #ececec;
 }
 
 #app {
@@ -100,16 +104,16 @@ body {
 
 .painel {
 	flex: 1;
-	background: #FFF;
+	background: #fff;
 	margin: 0px 10px;
 	padding: 20px;
-	border: 1px solid #AAA;
+	border: 1px solid #aaa;
 	border-radius: 5px;
 }
 
 .painel .cabecalho {
 	width: 100%;
-	background-color: #DDD;
+	background-color: #ddd;
 	padding: 10px 0px;
 	border-radius: 5px;
 	font-size: 1.4rem;
@@ -121,8 +125,8 @@ body {
 	padding: 10px 20px;
 	font-size: 1.4rem;
 	border-radius: 5px;
-	color: #FFF;
-	background-color: #2196F3;
+	color: #fff;
+	background-color: #2196f3;
 }
 
 #app h1 {
