@@ -36,8 +36,14 @@
 					</span>
 				</Rotulo>
 				<Rotulo nome="Prioridade">
-					<select name="" id="">
-						<option></option>
+					<select v-model="prioridade">
+						<option
+							:value="prioridade.codigo"
+							:key="prioridade.codigo"
+							v-for="prioridade in prioridades"
+						>
+							{{ prioridade.codigo }} - {{ prioridade.nome }}
+						</option>
 					</select>
 				</Rotulo>
 				<Rotulo nome="Primeira Reclamação?">
@@ -55,7 +61,7 @@
 					<span>{{ usuario.senha }}</span>
 				</Rotulo>
 				<Rotulo nome="Idade">
-					<span>{{ usuario.idade }} {{ tipo }}</span>
+					<span>{{ usuario.idade }} {{ tipoIdade }}</span>
 				</Rotulo>
 				<Rotulo nome="Mensagem">
 					<span style="white-space: pre;">{{ mensagem }}</span>
@@ -73,7 +79,7 @@
 					<span>{{ produto }}</span>
 				</Rotulo>
 				<Rotulo nome="Prioridade">
-					<span>???</span>
+					<span>{{ prioridade }} {{ tipoPrioridade }}</span>
 				</Rotulo>
 				<Rotulo nome="Primeira Reclamação?">
 					<span>???</span>
@@ -90,11 +96,25 @@ import Escolha from './components/Escolha.vue'
 export default {
 	name: 'app',
 	components: { Rotulo, Escolha },
+	computed: {
+		tipoIdade() {
+			return typeof this.usuario.idade
+		},
+		tipoPrioridade() {
+			return typeof this.prioridade
+		}
+	},
 	data() {
 		return {
 			mensagem: '',
 			caracteristicas: [],
 			produto: 'web',
+			prioridade: 1,
+			prioridades: [
+				{ codigo: 1, nome: 'Baixa' },
+				{ codigo: 2, nome: 'Moderada' },
+				{ codigo: 3, nome: 'Alta' }
+			],
 			usuario: {
 				email: '',
 				senha: '',
