@@ -10,42 +10,37 @@
 				<!-- Exercicio 01 -->
 				<!-- Criar uma formulário de registro -->
 				<!-- Nome completo (Nome e Sobrenome) -->
-				<Rotulo nome="Nome">
-					<input id="name" type="text" placeholder="Nome" v-model="user.name">
-				</Rotulo>
-				<Rotulo nome="Sobrenome">
-					<input id="surname" type="text" placeholder="Sobrenome"  v-model="user.surname">
-				</Rotulo>
+
+					<!-- Exercicio 03 -->
+				<!-- Crie um componente personalizado NomeCompleto -->
+				<!-- Esse componente deve receber Nome e Sobrenome -->
+				<NomeCompleto :value="user.fullName" />
 
 				<!-- Email -->
 				<Rotulo nome="E-mail">
-					<input id="email" type="email" placeholder="E-mail"  v-model="user.email">
+					<input id="email" type="email" v-model="user.email">
 				</Rotulo>
 
 				<!-- Senha -->
 				<Rotulo nome="Senha">
-					<input id="password" type="password" placeholder="Senha"  v-model="user.password">
+					<input id="password" type="password" v-model="user.password">
 				</Rotulo>
 
 				<!-- Armazenar Dados? (Sim/Não) -->
 				<Rotulo nome="Armazenar dados?">
-					<span class="mr-4">
-						<input type="radio" value="Sim" v-model="shouldStoreData"> Sim
-					</span>
-					<span class="mr-4">
-						<input type="radio" value="Não" v-model="shouldStoreData"> Não
-					</span>
+					<input type="checkbox" v-model="shouldStoreData">
 				</Rotulo>
 
 				<button @click="submitForm" type="button">Submeter formulário</button>
 			</form>
 
 			<div v-else class="painel">
-				<!-- Exercicio 03 -->
-				<!-- Crie um componente personalizado NomeCompleto -->
-				<!-- Esse componente deve receber Nome e Sobrenome -->
-				<Rotulo nome="Nome completo">
-					<NomeCompleto :name="user.name" :surname="user.surname" />
+				<Rotulo nome="Nome">
+					<output>{{ user.fullName.name }}</output>
+				</Rotulo>
+
+				<Rotulo nome="Sobrenome">
+					<output>{{ user.fullName.surname }}</output>
 				</Rotulo>
 
 				<!-- Email -->
@@ -77,12 +72,14 @@ export default {
 	data() {
 		return {
 			user: {
-				name: '',
-				surname: '',
+				fullName: {
+					name: '',
+					surname: ''
+				},
 				email: '',
 				password: ''
 			},
-			shouldStoreData: 'Sim',
+			shouldStoreData: true,
 			submitted: false
 		}
 	},
