@@ -7,11 +7,31 @@
 		<hr />
 		<p v-destaque:fundo.atrasar="'lightblue'">Usando diretiva personalizada</p>
 		<p v-destaque.atrasar="cor">Usando diretiva personalizada</p>
+		<p v-destaque-local:fundo.atrasar="'lightblue'">Usando diretiva personalizada local</p>
+		<p v-destaque-local.atrasar="cor">Usando diretiva personalizada local</p>
 	</div>
 </template>
 
 <script>
 export default {
+	directives: {
+		'destaque-local': {
+			bind(el, binding, vnode) {
+				let atraso = 0
+				if (binding.modifiers['atrasar']) {
+					atraso = 3000
+				}
+
+				setTimeout(() => {
+					if (binding.arg === 'fundo') {
+						el.style.backgroundColor = binding.value
+					} else {
+						el.style.color = binding.value
+					}
+				}, atraso)
+			}
+		}
+	},
 	data() {
 		return {
 			cor: 'red'
