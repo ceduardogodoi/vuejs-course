@@ -5,6 +5,11 @@
 		<!-- Exercício -->
 		<!-- Escreva uma diretiva que funcione com o v-on (escute eventos) -->
 		<button v-quando:click="handleClick">Executar</button>
+		<p
+			v-quando:mouseenter="mouseEnter"
+			v-quando:mouseleave="mouseLeave">
+			Teste mouse event!
+		</p>
 	</div>
 </template>
 
@@ -13,17 +18,21 @@ export default {
 	directives: {
 		quando: {
 			bind(el, binding) {
-				if (binding.arg === 'click') {
-					el.addEventListener('click', () => {
-						binding.value()
-					})
-				}
+				const tipo = binding.arg
+				const fn = binding.value
+				el.addEventListener(tipo, fn)
 			}
 		}
 	},
 	methods: {
 		handleClick() {
 			alert('Minha diretiva de click')
+		},
+		mouseEnter() {
+			console.log('Minha diretiva de mouse enter')
+		},
+		mouseLeave() {
+			console.log('Minha diretiva de mouse leave')
 		}
 	}
 }
