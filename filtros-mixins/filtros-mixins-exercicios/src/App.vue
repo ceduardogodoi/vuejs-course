@@ -16,14 +16,19 @@
 				<input type="text" v-model="fruta" @keydown.enter="add">
 			</ul>
 		</div>
+		<hr />
+		<p>{{ usuarioLogado }}</p>
 	</div>
 </template>
 
 <script>
 import Frutas from './Frutas.vue'
+import frutasMixin from './frutasMixin'
+import usuarioMixin from './usuarioMixin'
 
 export default {
 	components: { Frutas },
+	mixins: [frutasMixin, usuarioMixin],
 	filters: {
 		cpf(valor) {
 			const arr = `${valor}`.split('')
@@ -36,14 +41,7 @@ export default {
 	data() {
 		return {
 			cpfDoAluno: '60070080090',
-			fruta: '',
-			frutas: ['banana', 'maça', 'laranja']
-		}
-	},
-	methods: {
-		add() {
-			this.frutas.push(this.fruta)
-			this.fruta = ''
+			frutas: ['abacate']
 		}
 	}
 }
