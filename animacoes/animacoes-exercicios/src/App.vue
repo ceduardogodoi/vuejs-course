@@ -31,21 +31,25 @@ export default {
 	font-size: 1.5rem;
 }
 
-.fade-enter {
+.fade-enter,
+.fade-leave-to {
+	opacity: 0;
 }
 
-.fade-enter-active {
+.fade-enter-active,
+.fade-leave-active {
+	transition: opacity 2s;
 }
 
-.fade-enter-to {
+/* .fade-enter-to {
+	opacity: 1;
 }
 
 .fade-leave {
+	opacity: 1;
 }
 
 .fade-leave-active {
-}
-
-.fade-leave-to {
-}
+	transition: opacity 2s;
+} */
 </style>
