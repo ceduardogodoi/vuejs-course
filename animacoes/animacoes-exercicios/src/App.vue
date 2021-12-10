@@ -17,7 +17,8 @@
 		>
 			<b-alert variant="info" show v-show="exibir">{{ msg }}</b-alert>
 		</transition> -->
-		<hr />
+
+		<!-- <hr />
 		<b-select v-model="tipoAnimacao" class="mb-4">
 			<option value="fade">Fade</option>
 			<option value="slide">Slide</option>
@@ -52,7 +53,13 @@
 		</div>
 		<transition name="fade" mode="out-in">
 			<component :is="componenteSelecionado"></component>
-		</transition>
+		</transition> -->
+
+		<hr />
+		<b-button @click="adicionarAluno" class="mb-4">Adicionar Aluno</b-button>
+		<b-list-group v-for="(aluno, i) in alunos" :key="aluno">
+			<b-list-group-item @click="removerAluno(i)">{{ aluno }}</b-list-group-item>
+		</b-list-group>
 	</div>
 </template>
 
@@ -64,6 +71,7 @@ export default {
 	components: { AlertaAdvertencia, AlertaInfo },
 	data() {
 		return {
+			alunos: ['Roberto', 'Julia', 'Teresa', 'Paulo'],
 			msg: 'Uma mensagem de informação para o usuário!',
 			exibir: false,
 			exibir2: true,
@@ -73,6 +81,15 @@ export default {
 		}
 	},
 	methods: {
+		adicionarAluno() {
+			const s = Math.random()
+				.toString(36)
+				.substring(2)
+			this.alunos.push(s)
+		},
+		removerAluno(indice) {
+			this.alunos.splice(indice, 1)
+		},
 		animar(el, done, negativo) {
 			let rodada = 1
 			const temporizador = setInterval(() => {
