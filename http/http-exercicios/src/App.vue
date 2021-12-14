@@ -34,6 +34,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
 	data() {
 		return {
@@ -52,7 +54,9 @@ export default {
 			})
 		},
 		obterUsuarios() {
-			this.$http('usuarios.json').then(response => {
+			axios(
+				'https://curso-vue-a2b9f-default-rtdb.firebaseio.com/usuarios.json'
+			).then(response => {
 				this.usuarios = response.data
 			})
 		}
