@@ -54,12 +54,12 @@ export default {
 			})
 		},
 		obterUsuarios() {
-			axios(
-				'https://curso-vue-a2b9f-default-rtdb.firebaseio.com/usuarios.json'
-			).then(response => {
+			this.$http('usuarios.json').then(response => {
 				this.usuarios = response.data
 				console.log(response.data)
 			})
+
+			// this.$http.defaults.headers.common['Authorization'] = 'abc123'
 		}
 	}
 }
