@@ -27,7 +27,7 @@
 				<br />
 				<strong>E-mail: </strong> {{ usuario.email }}
 				<br />
-				<strong>ID: </strong> {{ id }}
+				<strong>ID: </strong> {{ usuario.id }}
 			</b-list-group-item>
 		</b-list-group>
 	</div>
@@ -58,6 +58,7 @@ export default {
 				'https://curso-vue-a2b9f-default-rtdb.firebaseio.com/usuarios.json'
 			).then(response => {
 				this.usuarios = response.data
+				console.log(response.data)
 			})
 		}
 	}
