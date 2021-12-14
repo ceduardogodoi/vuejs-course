@@ -13,6 +13,8 @@ export default {
 				email: 'maria_maria@gmail.com'
 			})
 			.then(console.log)
+
+		this.$http2.get('todos/1').then(console.log)
 	}
 }
 </script>
