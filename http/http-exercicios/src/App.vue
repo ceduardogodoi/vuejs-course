@@ -31,7 +31,10 @@ export default {
 	},
 	methods: {
 		salvar() {
-			console.log(this.usuario)
+			this.$http.post('usuarios.json', this.usuario).then(response => {
+				this.usuario.nome = ''
+				this.usuario.email = ''
+			})
 		}
 	}
 }
