@@ -18,7 +18,7 @@ Vue.use({
 
 		Vue.prototype.$http.interceptors.request.use(
 			config => {
-				console.log('request interceptor:', config.method)
+				// console.log('request interceptor:', config.method)
 				// if (config.method === 'post') {
 				// 	config.method = 'put'
 				// }
@@ -29,15 +29,15 @@ Vue.use({
 
 		Vue.prototype.$http.interceptors.response.use(
 			response => {
-				const array = []
-				for (let chave in response.data) {
-					array.push({
-						id: chave,
-						...response.data[chave]
-					})
-				}
+				// const array = []
+				// for (let chave in response.data) {
+				// 	array.push({
+				// 		id: chave,
+				// 		...response.data[chave]
+				// 	})
+				// }
 
-				response.data = array
+				// response.data = array
 				return response
 			},
 			error => Promise.reject(error)
