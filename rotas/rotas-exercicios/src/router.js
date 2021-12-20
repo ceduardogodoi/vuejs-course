@@ -10,6 +10,6 @@ export default new Router({
 	mode: 'history',
 	routes: [
 		{ path: '/', component: Inicio },
-		{ path: '/usuario/:id', component: Usuario }
+		{ path: '/usuario/:id', component: Usuario, props: true }
 	]
 })
