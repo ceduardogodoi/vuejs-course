@@ -3,7 +3,22 @@
     <h3>Usuário detalhe</h3>
     <p><strong>Código: </strong>{{ id }}</p>
     <!-- :to="`/usuario/${$route.params.id}/editar`" -->
-    <router-link tag="button" primario :to="{ name: 'editarUsuario', params: { id } }">Editar</router-link>
+    <router-link
+      tag="button"
+      primario
+      :to="{
+        name: 'editarUsuario',
+        params: {
+          id
+        },
+        query: {
+          completo: false,
+          lingua: 'en'
+        }
+      }"
+    >
+      Editar
+    </router-link>
   </div>
 </template>
 
