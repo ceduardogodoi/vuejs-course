@@ -22,8 +22,7 @@ export default new Router({
 			name: 'inicio',
 			components: {
 				default: Inicio,
-				menu: Menu,
-				menuInferior: Menu
+				menu: Menu
 			}
 		},
 		{
@@ -49,6 +48,10 @@ export default new Router({
 		{
 			path: '/redirecionar',
 			redirect: '/usuario'
+		},
+		{
+			path: '*',
+			redirect: '/'
 		}
 	]
 })
