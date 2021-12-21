@@ -14,7 +14,8 @@
         query: {
           completo: false,
           lingua: 'en'
-        }
+        },
+        hash: '#rodape'
       }"
     >
       Editar
