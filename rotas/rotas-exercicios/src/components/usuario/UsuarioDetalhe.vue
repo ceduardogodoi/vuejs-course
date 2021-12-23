@@ -25,7 +25,18 @@
 
 <script>
 export default {
-	props: ['id']
+	props: ['id'],
+	beforeRouteEnter(to, from, next) {
+		// console.log(this.id)
+		console.log('dentro do componente -> usuário detalhe')
+
+		const autenticado = true
+		autenticado ? next() : next(false)
+
+		// next(vm => {
+		// 	console.log(vm.id)
+		// })
+	}
 }
 </script>
 
