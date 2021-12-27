@@ -8,11 +8,16 @@ export default new Vuex.Store({
 		produtos: []
 	},
 	getters: {
-		valorTotal(state) {
+		valorTotal(state, getters) {
 			return state.produtos.reduce((acumulador, produto) => {
 				acumulador += produto.quantidade * produto.preco
 				return acumulador
 			}, 0)
+		}
+	},
+	mutations: {
+		adicionarProduto(state, payload) {
+			state.produtos.push(payload)
 		}
 	}
 })
