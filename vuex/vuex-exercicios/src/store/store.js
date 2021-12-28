@@ -5,7 +5,9 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
 	state: {
-		produtos: []
+		produtos: [],
+		quantidade: 3,
+		preco: 19.99
 	},
 	getters: {
 		valorTotal(state, getters) {
@@ -14,10 +16,22 @@ export default new Vuex.Store({
 				return acumulador
 			}, 0)
 		}
+		// quantidade(state) {
+		// 	return state.quantidade
+		// },
+		// preco(state) {
+		// 	return state.preco
+		// }
 	},
 	mutations: {
 		adicionarProduto(state, payload) {
 			state.produtos.push(payload)
+		},
+		setQuantidade(state, payload) {
+			state.quantidade = payload
+		},
+		setPreco(state, payload) {
+			state.preco = payload
 		}
 	},
 	actions: {
