@@ -33,11 +33,8 @@ export default {
 		...mapGetters({
 			total: 'valorTotal'
 		}),
-		// total() {
-		// 	return this.$store.getters.valorTotal
-		// },
 		produtos() {
-			return this.$store.state.produtos
+			return this.$store.state.carrinho.produtos
 		}
 	}
 }
