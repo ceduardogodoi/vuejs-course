@@ -1,6 +1,6 @@
 export default {
 	state: {
-		funds: 10_000,
+		funds: 10000,
 		stocks: []
 	},
 	mutations: {
