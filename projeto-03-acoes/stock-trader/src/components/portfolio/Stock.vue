@@ -13,12 +13,12 @@
 
     <v-card>
       <v-container fill-height>
-        <v-text-field label="Quantidade" type="number" v-model.number="quantity" />
+        <v-text-field label="Quantidade" type="number" v-model.number="quantity" :error="insufficientQuantity || !Number.isInteger(quantity)" />
         <v-btn
           @click="sellStock"
-          :disabled="quantity <= 0 || !Number.isInteger(quantity)"
+          :disabled="insufficientQuantity || quantity <= 0 || !Number.isInteger(quantity)"
           class="blue darken-3 white--text">
-          Vender
+          {{ insufficientQuantity ? 'Insuficiente' : 'Vender' }}
         </v-btn>
       </v-container>
     </v-card>
@@ -29,29 +29,34 @@
 import { mapActions } from 'vuex'
 
 export default {
-	props: ['stock'],
-	data() {
-		return {
-			quantity: 0
-		}
-	},
-	methods: {
-		...mapActions({
-			sellStockAction: 'sellStock'
-		}),
-		sellStock() {
-			const order = {
-				stockId: this.stock.id,
-				stockPrice: this.stock.price,
-				quantity: this.quantity
-			}
+  props: ['stock'],
+  data() {
+    return {
+      quantity: 0
+    }
+  },
+  computed: {
+    insufficientQuantity() {
+      return this.quantity > this.stock.quantity
+    }
+  },
+  methods: {
+    ...mapActions({
+      sellStockAction: 'sellStock'
+    }),
+    sellStock() {
+      const order = {
+        stockId: this.stock.id,
+        stockPrice: this.stock.price,
+        quantity: this.quantity
+      }
 
-			this.sellStockAction(order)
-			// this.$store.dispatch('sellStock', order)
+      this.sellStockAction(order)
+      // this.$store.dispatch('sellStock', order)
 
-			this.quantity = 0
-		}
-	}
+      this.quantity = 0
+    }
+  }
 }
 </script>
 
