@@ -9,12 +9,12 @@ import { mapGetters } from 'vuex'
 import Stock from './Stock.vue'
 
 export default {
-	components: { Stock },
-	computed: {
-		...mapGetters({
-			stocks: 'stockPortfolio'
-		})
-	}
+  components: { Stock },
+  computed: {
+    ...mapGetters({
+      stocks: 'stockPortfolio'
+    })
+  }
 }
 </script>
 
