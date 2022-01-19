@@ -21,7 +21,7 @@
           <v-list-tile @click="saveData">
             <v-list-tile-title>Salvar dados</v-list-tile-title>
           </v-list-tile>
-          <v-list-tile>
+          <v-list-tile @click="loadData">
             <v-list-tile-title>Carregar dados</v-list-tile-title>
           </v-list-tile>
         </v-list>
@@ -43,7 +43,7 @@ export default {
     ...mapGetters(['funds'])
   },
   methods: {
-    ...mapActions(['randomizeStocks']),
+    ...mapActions(['randomizeStocks', 'loadData']),
     endDay() {
       this.randomizeStocks()
     },
